@@ -11,6 +11,7 @@ from odoo.fields import Date, Datetime
 from odoo.tools import lazy, ustr
 from odoo.tools.misc import frozendict
 
+
 # ustr decodes as utf-8 or latin1 so we can search for the ASCII bytes
 # 	Char	   ::=   	#x9 | #xA | #xD | [#x20-#xD7FF]
 XML_INVALID = re.compile(b'[\x00-\x08\x0B\x0C\x0F-\x1F]')
@@ -65,8 +66,11 @@ class RPC(Controller):
         """Common method to handle an XML-RPC request."""
         data = request.httprequest.get_data()
         params, method = loads(data)
+        allow_none = request.httprequest.headers.get('XML-RPC-Accept-Nil') == '1'
+        if allow_none:
+            request.env.context = frozendict(request.env.context, allow_none=allow_none)
         result = dispatch_rpc(service, method, params)
-        return dumps((result,), methodresponse=1, allow_none=False)
+        return dumps((result,), methodresponse=1, allow_none=allow_none)
 
     @route("/xmlrpc/<service>", auth="none", methods=["POST"], csrf=False, save_session=False)
     def xmlrpc_1(self, service):
@@ -93,4 +97,10 @@ class RPC(Controller):
     @route('/jsonrpc', type='json', auth="none", save_session=False)
     def jsonrpc(self, service, method, args):
         """ Method used by client APIs to contact OpenERP. """
+        return dispatch_rpc(service, method, args)
+
+    @route('/jsonrpc/2', type='json', auth='none', save_session=False)
+    def jsonrpc_2(self, service, method, args):
+        """JSON-RPC service able to return null values."""
+        request.env.context = frozendict(request.env.context, allow_none=True)
         return dispatch_rpc(service, method, args)
