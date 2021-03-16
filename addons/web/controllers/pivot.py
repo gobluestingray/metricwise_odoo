@@ -1,12 +1,14 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from collections import deque
 import io
 import json
+from os.path import join, splitext
+
+from werkzeug.utils import secure_filename
 
 from odoo import http
-from odoo.http import request
+from odoo.http import content_disposition, request
 from odoo.tools import ustr
 from odoo.tools.misc import xlsxwriter
 
@@ -102,9 +104,10 @@ class TableExporter(http.Controller):
 
         workbook.close()
         xlsx_data = output.getvalue()
+        filename = secure_filename(jdata['title']) + '.xls'
         response = request.make_response(xlsx_data,
             headers=[('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
-                    ('Content-Disposition', 'attachment; filename=table.xlsx')],
+                    ('Content-Disposition', content_disposition(filename))],
             cookies={'fileToken': token})
 
         return response
