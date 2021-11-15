@@ -1231,6 +1231,8 @@ var ListRenderer = BasicRenderer.extend({
      * @param {MouseEvent} ev
      */
     _onRowClicked: function (ev) {
+        console.log(ev);
+        console.trace();
         // The special_click property explicitely allow events to bubble all
         // the way up to bootstrap's level rather than being stopped earlier.
         if (!ev.target.closest('.o_list_record_selector') && !$(ev.target).prop('special_click')) {
