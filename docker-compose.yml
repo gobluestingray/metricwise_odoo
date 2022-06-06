@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  web:
+    build:
+      context: ./docker
+      args:
+        PIP_EXE: "pip3"
+        ODOO_EXE: "odoo-bin"
+        ODOO_VERSION: "15.0"
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./addons:/opt/odoo/core/addons
+      - ./docker/config:/opt/odoo/config
+      - ./docker/log:/opt/odoo/log
+      - ./docker/vendor:/opt/odoo/vendor
+      - ./odoo-bin:/opt/odoo/core/odoo-bin
+      - ./odoo:/opt/odoo/core/odoo
+
+  db:
+    image: postgres:14.3
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - postgresdb:/data/postgres
+
+volumes:
+  postgresdb:

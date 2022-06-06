@@ -1,0 +1,38 @@
+2022-06-06 17:35:59,822 1 INFO ? odoo: Odoo version 15.0 
+2022-06-06 17:35:59,823 1 INFO ? odoo: Using configuration file at /opt/odoo/config/odoo.conf 
+2022-06-06 17:35:59,823 1 INFO ? odoo: addons paths: ['/opt/odoo/core/odoo/addons', '/var/lib/odoo/addons/15.0', '/opt/odoo/core/addons', '/opt/odoo/vendor'] 
+2022-06-06 17:35:59,824 1 INFO ? odoo: database: odoo@db:5432 
+2022-06-06 17:36:00,040 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2022-06-06 17:36:00,605 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0.0.0.0:8069 
+2022-06-06 17:36:00,609 10 INFO ? odoo.service.server: Worker WorkerHTTP (10) alive 
+2022-06-06 17:36:00,611 11 INFO ? odoo.service.server: Worker WorkerHTTP (11) alive 
+2022-06-06 17:36:00,614 12 INFO ? odoo.service.server: Worker WorkerHTTP (12) alive 
+2022-06-06 17:36:00,618 14 INFO ? odoo.service.server: Worker WorkerHTTP (14) alive 
+2022-06-06 17:36:00,628 19 INFO ? odoo.service.server: Worker WorkerCron (19) alive 
+2022-06-06 17:36:00,632 20 INFO ? odoo.service.server: Worker WorkerCron (20) alive 
+2022-06-06 17:36:01,509 17 INFO ? odoo: Odoo version 15.0 
+2022-06-06 17:36:01,510 17 INFO ? odoo: Using configuration file at /opt/odoo/config/odoo.conf 
+2022-06-06 17:36:01,512 17 INFO ? odoo: addons paths: ['/opt/odoo/core/odoo/addons', '/var/lib/odoo/addons/15.0', '/opt/odoo/core/addons', '/opt/odoo/vendor'] 
+2022-06-06 17:36:01,513 17 INFO ? odoo: database: odoo@db:5432 
+2022-06-06 17:36:01,679 17 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2022-06-06 17:36:01,990 17 INFO ? odoo.service.server: Evented Service (longpolling) running on 0.0.0.0:8072 
+2022-06-06 17:36:12,562 11 INFO odoo odoo.modules.loading: loading 1 modules... 
+2022-06-06 17:36:12,574 11 INFO odoo odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2022-06-06 17:36:12,620 11 INFO odoo odoo.modules.loading: loading 7 modules... 
+2022-06-06 17:36:12,895 11 INFO odoo odoo.modules.loading: 7 modules loaded in 0.27s, 0 queries (+0 extra) 
+2022-06-06 17:36:12,927 11 INFO odoo odoo.modules.loading: Modules loaded. 
+2022-06-06 17:36:12,932 11 INFO odoo odoo.modules.registry: Registry loaded in 0.387s 
+2022-06-06 17:36:12,935 11 INFO odoo odoo.addons.base.models.ir_http: Generating routing map for key None 
+2022-06-06 17:36:13,048 11 INFO odoo werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:13] "GET /web?debug=1 HTTP/1.1" 303 - 16 0.013 0.503
+2022-06-06 17:36:14,256 14 INFO odoo odoo.modules.loading: loading 1 modules... 
+2022-06-06 17:36:14,269 14 INFO odoo odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2022-06-06 17:36:14,320 14 INFO odoo odoo.modules.loading: loading 7 modules... 
+2022-06-06 17:36:14,512 14 INFO odoo odoo.modules.loading: 7 modules loaded in 0.19s, 0 queries (+0 extra) 
+2022-06-06 17:36:14,544 14 INFO odoo odoo.modules.loading: Modules loaded. 
+2022-06-06 17:36:14,548 14 INFO odoo odoo.modules.registry: Registry loaded in 0.312s 
+2022-06-06 17:36:14,551 14 INFO odoo odoo.addons.base.models.ir_http: Generating routing map for key None 
+2022-06-06 17:36:16,714 14 INFO odoo werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:16] "GET /web/login HTTP/1.1" 200 - 96 0.052 2.427
+2022-06-06 17:36:17,265 11 INFO odoo werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:17] "GET /web/webclient/translations/1654536977189 HTTP/1.1" 200 - 10 0.034 0.011
+2022-06-06 17:36:17,403 11 INFO odoo werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:17] "GET /web/webclient/qweb/1654536977252?bundle=web.assets_frontend HTTP/1.1" 200 - 10 0.009 0.113
+2022-06-06 17:36:17,435 11 INFO odoo werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:17] "GET /web/webclient/translations/1654536977394 HTTP/1.1" 200 - 4 0.004 0.012
+2022-06-06 17:36:18,118 12 INFO ? werkzeug: 172.23.0.1 - - [06/Jun/2022 17:36:18] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - - - -
