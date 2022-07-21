@@ -15,6 +15,12 @@ import {
     rankInterval,
     yearSelected,
 } from "./utils/dates";
+import {
+    DEFAULT_OPERATOR,
+    constructSelectionDomain,
+    getSelectionValues,
+    getSelectionTuples,
+}
 import { FACET_ICONS } from "./utils/misc";
 
 const { DateTime } = luxon;
@@ -328,6 +334,14 @@ export class SearchModel extends EventBus {
         );
         if (dateFilters.length) {
             this._createGroupOfComparisons(dateFilters);
+        }
+
+        const selectionFilters = Object.values(this.searchItems).filter(
+            (searchElement) => searchElement.type === "selectionFilter"
+        );
+
+        if (selectionFilters.length) {
+            this._createGroupOfSelections(selectionFilters);
         }
 
         const { dynamicFilters } = config;

@@ -26,7 +26,7 @@ const getContextGroubBy = (context) => {
 };
 
 function reduceType(type) {
-    if (type === "dateFilter") {
+    if (type === "dateFilter" || type === "selectionFilter") {
         return "filter";
     }
     if (type === "dateGroupBy") {

@@ -689,6 +689,19 @@ odoo.define("web/static/src/js/control_panel/control_panel_model_extension.js", 
         }
 
         /**
+         * Add filters of type 'selectionFilter' determined by the array of
+         * 'selectionFilter` objects.
+         * @private
+         * @param {Object[] selectionFilters}
+         */
+         _createGroupOfSelectionFilters(selectionFilters) {
+            const preFilters = [];
+            for (const selectionFilter of SelectionFilters) {
+                //TODO: Finish Implementing me!
+            }
+         }
+
+        /**
          * Add filters of type 'filter' determined by the key array dynamicFilters.
          * @private
          */
