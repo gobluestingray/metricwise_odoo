@@ -5,7 +5,7 @@ odoo.define("web/static/src/js/control_panel/control_panel_model_extension.js", 
     const Domain = require('web.Domain');
     const pyUtils = require('web.py_utils');
 
-    const { DEFAULT_INTERVAL, DEFAULT_PERIOD,
+    const { DEFAULT_OPERATOR, DEFAULT_INTERVAL, DEFAULT_PERIOD,
         getComparisonOptions, getIntervalOptions, getPeriodOptions,
         constructDateDomain, rankInterval, yearSelected } = require('web.searchUtils');
 
@@ -425,11 +425,14 @@ odoo.define("web/static/src/js/control_panel/control_panel_model_extension.js", 
          * @returns {Array[]}
          */
         getDomain() {
+            debugger;
             const groups = this._getGroups();
             const userContext = this.env.session.user_context;
             try {
                 return Domain.prototype.stringToArray(this._getDomain(groups), userContext);
             } catch (err) {
+                // FIXME: Where is s coming from? err = "s is undefined"
+                // TODO: Step throguh Domain to figure out
                 throw new Error(
                     `${this.env._t("Control panel model extension failed to evaluate domain")}:/n${JSON.stringify(err)}`
                 );
@@ -948,6 +951,13 @@ odoo.define("web/static/src/js/control_panel/control_panel_model_extension.js", 
                         filter.fieldName = attrs.date;
                         filter.fieldType = this.fields[attrs.date].type;
                         filter.defaultOptionId = attrs.default_period || DEFAULT_PERIOD;
+                    }
+                    else if (attrs.selection) {
+                        filter.isSelectionFilter = true;
+                        filter.hasSelectionOptions = true;
+                        filter.fieldName = attrs.selection;
+                        filter.fieldType = "selection";
+                        filter.defaultOperator = attrs.default_operator || DEFAULT_OPERATOR;
                     } else {
                         filter.domain = attrs.domain || '[]';
                     }
@@ -1441,6 +1451,24 @@ odoo.define("web/static/src/js/control_panel/control_panel_model_extension.js", 
             }
             return selectedOptionIds;
         }
+
+        /**
+         * Starting from the id of a selection filter, return the array of
+         * value ids currently selected for the corresponding filter.
+         * @private
+         * @param {string} selectionFilterId:
+         *    The Selection Filter to get the value ids for.
+         * @returns {string[]}: The Value Ids for the Selection Filter
+         */
+         _getSelectionValueIds(selectionFilterId) {
+            const selectiondValueIds = [];
+            for (const queryElem of this.state.query) {
+                if (quertElem.filterId === dateFilterId) {
+                    selectionValueIds.push(queryElem.optionId)
+                }
+            }
+            return selectionValueIds;
+         }
 
         /**
          * Returns the last timeRanges object found in the query.

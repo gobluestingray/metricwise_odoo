@@ -4,7 +4,7 @@ import { _lt } from "@web/core/l10n/translation";
 import { Domain } from "@web/core/domain";
 import { localization } from "@web/core/l10n/localization";
 
-export const DEFAULT_OPERATOR = "="
+export const DEFAULT_OPERATOR = "=";
 
 
 //-------------------------------------------------------------------------
@@ -17,18 +17,25 @@ export const DEFAULT_OPERATOR = "="
  *      ['|', d_1 ,..., '|', d_n]
  * where d_i is a Selection field value of the form
  *      [[selection_field, '=', d_i]]
+ * @param fieldName {string}: The name of the selection field to construct the
+ * domain for.
+ * @param selectionValueId {Object}: The Id of the Selection Value to domain by.
+ * @param operator {string}: The operator to use for constructing the domain.
+ * @returns {string[]}: The constructed selection field domain.
  */
  export function constructSelectionDomain(
     fieldName,
-    selectionValue,
+    selectionValueId,
     operator,
  ) {
+    // If no operator is provided, use the default operator, "="
     if (operator === undefined) {
         operator = DEFAULT_OPERATOR;
     }
 
-    //TODO: Construct the Selection Domain here
-    const domain;
+    const selectionValue = selectionValueId.selection;
+
+    const domain =new Domain([[fieldName, operator, selectionValue]]);
 
     return domain;
  }

@@ -736,6 +736,7 @@
                         and then they can be searched from the page listing the sale order lines related to a product (from the product itself).
                     -->
                     <filter string="My Orders" domain="[('user_id', '=', uid)]" name="my_sale_orders_filter"/>
+                    <filter string="State Filter Test" name="state" selection="state"/>
                     <filter invisible="1" string="Late Activities" name="activities_overdue"
                         domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
                         help="Show all records which has next action date is before today"/>

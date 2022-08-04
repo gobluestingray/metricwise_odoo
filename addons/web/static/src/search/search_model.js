@@ -20,7 +20,7 @@ import {
     constructSelectionDomain,
     getSelectionValues,
     getSelectionTuples,
-}
+} from "./utils/selection";
 import { FACET_ICONS } from "./utils/misc";
 
 const { DateTime } = luxon;
@@ -1375,6 +1375,26 @@ export class SearchModel extends EventBus {
     }
 
     /**
+     * Compute the string representation or the description of the current
+     * domain associated with a selection filter starting from its query
+     * elements.
+     * @private
+     * @param selectionFilter {}: The Selection Filter to get the domain for.
+     * @param generatorId {Object}: The Generator to create the Selection Filter from
+     * @param operator {string}: The Operator to use when creating the domain
+     * @param key {string}:
+     * Determines whether the domain or description should be returned, "domain"
+     * by default.
+     * @returns {string}:
+     * The Selection Filter's domain or description, based on the provided key.
+     */
+     _getSelectionFilterDomain(selectionFilter, generatorId, key = "domain") {
+        const { fieldName, fieldType } = selectionFilter;
+
+        return key === "domain" ? constructSelectionDomain(fieldName, generatorId, operator) : fieldName;
+     }
+
+    /**
      * Returns which components are displayed in the current action. Components
      * are opt-out, meaning that they will be displayed as long as a falsy
      * value is not provided. With the search panel, the view type must also
@@ -1914,6 +1934,25 @@ export class SearchModel extends EventBus {
         for (const queryElem of this.query) {
             if (queryElem.searchItemId === dateFilterId && "generatorId" in queryElem) {
                 selectedOptionIds.push(queryElem.generatorId);
+            }
+        }
+        return selectedOptionIds;
+    }
+
+
+    /**
+     * Starting from a selection filter id, get the array of option ids for the
+     * currently selected selection filter.
+     * @private
+     * @param selectionFilterId {Object}:
+     *      The currently selected Selection filter.
+     * @returns {Object[]}: The Array of options for the Selection Filter
+     */
+    _getSelectionGeneratorIds(selectionFilterId) {
+        const selectedOptionIds = [];
+        for (const queryElem of this.query) {
+            if (queryElem.searchItemId === selectionFilterId && "generatorId" in queryElem) {
+            selectedOptionIds.push(queryElem.generatorId);
             }
         }
         return selectedOptionIds;

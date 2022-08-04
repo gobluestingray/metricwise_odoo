@@ -88,6 +88,7 @@ odoo.define('web.searchUtils', function (require) {
         text: 'char',
         selection: 'selection',
     };
+    const DEFAULT_OPERATOR = "=";
     const DEFAULT_PERIOD = 'this_month';
     const QUARTERS = {
         1: { description: _lt("Q1"), coveredMonths: [0, 1, 2] },
