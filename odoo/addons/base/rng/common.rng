@@ -397,6 +397,7 @@
             <rng:optional><rng:attribute name="date"/></rng:optional>
             <rng:optional><rng:attribute name="default_period"/></rng:optional>
             <rng:optional><rng:attribute name="selection"/></rng:optional>
+            <rng:optional><rng:attribute name="many2one"/></rng:optional>
             <rng:zeroOrMore>
                 <rng:choice>
                     <rng:ref name="field" />

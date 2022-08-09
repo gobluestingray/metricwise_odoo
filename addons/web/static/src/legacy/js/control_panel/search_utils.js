@@ -187,7 +187,7 @@ odoo.define('web.searchUtils', function (require) {
     };
 
     //-------------------------------------------------------------------------
-    // Functions
+    // Date Functions
     //-------------------------------------------------------------------------
 
     /**
@@ -528,10 +528,123 @@ odoo.define('web.searchUtils', function (require) {
         return selectedOptionIds.some(optionId => !!YEAR_OPTIONS[optionId]);
     }
 
+    //-------------------------------------------------------------------------
+    // Selection Functions
+    //-------------------------------------------------------------------------
+
+
+    /**
+     * Constructs the string representation of a domain and its description. The
+     * domain is of the form:
+     *      ['|', d_1 ,..., '|', d_n]
+     * where d_i is a Selection field value of the form
+     *      [[selection_field, '=', d_i]]
+     * @param fieldName {string}: The name of the selection field to construct the
+     * domain for.
+     * @param selectionValueId {Object}: The Id of the Selection Value to domain by.
+     * @param operator {string}: The operator to use for constructing the domain.
+     * @returns {string[]}: The constructed selection field domain.
+     */
+    function constructSelectionDomain(
+        fieldName,
+        selectionValueId,
+        operator,
+    ) {
+        // If no operator is provided, use the default operator, "="
+        if (operator === undefined) {
+            operator = DEFAULT_OPERATOR;
+        }
+
+        const selectionValue = selectionValueId.selection;
+
+        const domain =new Domain([[fieldName, operator, selectionValue]]);
+
+        return domain;
+    }
+
+    /**
+     * Get a list of all Selection Values for the Selection field
+     *
+     * @param fieldName {string}: The name of the Selection field
+     * @returns {string[]}: A list of Selection field Values in string format
+     */
+    function getSelectionValues(
+        fieldName
+    ) {
+        //TODO: Implement me!
+        return [];
+    }
+
+    /**
+     * Get a list of all Selection Tuples: (technical_name, frontend_name)
+     *
+     * @param fieldName {string}: The name of the Selection field
+     * @returns {string[tuple(string, string)]}:
+     *     A list of Selection tuples in string format.
+     */
+    function getSelectionTuples(
+        fieldName
+    ) {
+        //TODO: Implement me!
+        return [[]];
+    }
+
+    //-------------------------------------------------------------------------
+    // Many2One Functions
+    //-------------------------------------------------------------------------
+
+    /**
+     * Constructs the string representation of a domain and its description. The
+     * domain is of the form:
+     *      ['|', d_1 ,..., '|', d_n]
+     * where d_i is a Many2one field record id of the form
+     *      [[many2one_field, '=', d_i]]
+     * @param fieldName {string}: The name of the Many2one field to construct the
+     * domain for.
+     * @param many2OneValueId {Object}: The Id of the Many2one Value to domain by.
+     * @param operator {string}: The operator to use for constructing the domain.
+     * @returns {string[]}: The constructed Many2one field domain.
+     */
+    function constructMany2OneDomain(
+        fieldName,
+        many2OneValueId,
+        operator,
+    ) {
+        // If no operator is provided, use the default operator, "="
+        if (operator === undefined) {
+            operator = DEFAULT_OPERATOR;
+        }
+
+        const many2OneValue = many2OneValueId.id;
+
+        const domain =new Domain([[fieldName, operator, many2OneValue]]);
+
+        return domain;
+    }
+
+    /**
+     * Get a list of all Many2one Values for the Many2one field
+     *
+     * @param fieldName {string}: The name of the Many2one field
+     * @param limit {int}: The number of records to get values for
+     * @param page_number {int}:
+     *     Determines which page of records, of length limit to get
+     * @returns {string[]}: A list of Selection field Values in string format
+     */
+    function getMany2OneValues(
+        fieldName
+        limit
+        page_number
+    ) {
+        //TODO: Implement me!
+        return [];
+    }
+
     return {
         COMPARISON_OPTIONS,
         DEFAULT_INTERVAL,
         DEFAULT_PERIOD,
+        DEFAULT_OPERATOR,
         FACET_ICONS,
         FIELD_OPERATORS,
         FIELD_TYPES,
@@ -539,6 +652,7 @@ odoo.define('web.searchUtils', function (require) {
         INTERVAL_OPTIONS,
         PERIOD_OPTIONS,
 
+        // Date
         constructDateRange,
         constructDateDomain,
         getComparisonOptions,
@@ -546,5 +660,14 @@ odoo.define('web.searchUtils', function (require) {
         getPeriodOptions,
         rankInterval,
         yearSelected,
+
+        // Selection
+        constructSelectionDomain,
+        getSelectionValues,
+        getSelectionTuples,
+
+        // Many2one
+        constructMany2oneDomain,
+        getMany2OneValues,
     };
 });
