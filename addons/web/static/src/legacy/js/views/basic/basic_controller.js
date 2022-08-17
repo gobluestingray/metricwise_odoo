@@ -698,6 +698,7 @@ var BasicController = AbstractController.extend(FieldManagerMixin, {
             actionMenus: this._getActionMenuItems(state),
             pager: this._getPagingInfo(state),
             title: this.getTitle(),
+            viewDescription: this.getViewDescription(),
         });
         return this.updateControlPanel(props);
     },

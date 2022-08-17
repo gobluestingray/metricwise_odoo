@@ -259,8 +259,10 @@ var AbstractView = Factory.extend({
                 views: params.action.views && params.action.views.filter(
                     v => v.multiRecord === this.multi_record
                 ),
+//                view_description: param.view_description,
                 withBreadcrumbs: params.withBreadcrumbs,
                 withSearchBar: params.withSearchBar,
+//                withViewDescription: params.withViewDescription,
             };
             this.controllerParams.controlPanel = {
                 Component: ControlPanelComponent,

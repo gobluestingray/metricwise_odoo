@@ -24,6 +24,7 @@ var ReportAction = AbstractAction.extend({
 
         this.action_manager = parent;
         this._title = options.display_name || options.name;
+        this._viewDescription = options.view_description;
 
         this.report_url = options.report_url;
 

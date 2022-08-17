@@ -41,6 +41,7 @@ function registerClientAction(name, action) {
 
                 // always add user context to the action context
                 this.user = useService("user");
+//                this.viewDescription = useService("view_description");
                 const clientAction = Object.assign({}, this.props.action, {
                     context: Object.assign({}, this.user.context, this.props.action.context),
                 });
