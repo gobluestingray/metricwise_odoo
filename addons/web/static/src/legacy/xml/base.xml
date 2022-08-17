@@ -37,7 +37,8 @@
 <!--                        <t t-foreach="props.action.controlPanelFieldsView.fields" t-as="p"><p t-esc="p"/></t>-->
                         <br/>
                         <t t-esc="props.action"/>
-                        <p t-esc="withViewDescription"/>
+                        <p t-esc="props.withViewDescription"/>
+
                     </div>
                 </div>
             </div>
