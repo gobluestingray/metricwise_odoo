@@ -159,12 +159,12 @@ const AbstractAction = Widget.extend(ActionMixin, {
             if ('title' in this.controlPanelProps) {
                 this._setTitle(this.controlPanelProps.title);
             }
-            if ('view_description' in this.controlPanelProps) {
-                this._setViewDescription(this.controlPanelProps
-                .view_description);
-            }
+//            if ('view_description' in this.controlPanelProps) {
+//                this._setViewDescription(this.controlPanelProps
+//                .view_description);
+//            }
             this.controlPanelProps.title = this.getTitle();
-            this.controlPanelProps.view_description = this.getViewDescription();
+//            this.controlPanelProps.view_description = this.getViewDescription();
             this._controlPanelWrapper = new ComponentWrapper(this, this.config.ControlPanel, this.controlPanelProps);
             await this._controlPanelWrapper.mount(this.el, { position: 'first-child' });
 

@@ -25,6 +25,7 @@ class ActionDialog extends Dialog {
         const action = actionProps && actionProps.action;
         this.actionType = action && action.type;
         this.title = "title" in this.props ? this.props.title : this.constructor.title;
+//        this.viewDescription = "view_description" in this.props ? this.props.view_description : this.constructor.view_description;
     }
 }
 ActionDialog.components = { ...Dialog.components, DebugMenu };
