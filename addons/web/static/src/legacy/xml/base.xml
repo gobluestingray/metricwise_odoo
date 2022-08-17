@@ -26,19 +26,8 @@
             </div>
             <div class="o_cp_top_center" t-if="props.withSearchBar">
                 <div t-if="props.withBreadcrumbs" class="breadcrumb" role="navigation">
-                    <div class="breadcrumb-item active">
-                        <p t-if="props.description" t-esc="props.description" style="size: 15px;"/>
-                        <t t-foreach="props" t-as="p"><p t-esc="p"/></t>
-<!--                        <br/>-->
-<!--                        <t t-foreach="props.action" t-as="p"><p t-esc="p"/></t>-->
-<!--                        <br/>-->
-<!--                        <p t-esc="props.action._originalAction"/>-->
-<!--                        <br/>-->
-<!--                        <t t-foreach="props.action.controlPanelFieldsView.fields" t-as="p"><p t-esc="p"/></t>-->
-                        <br/>
-                        <t t-esc="props.action"/>
-                        <p t-esc="props.withViewDescription"/>
-
+                    <div>
+                        <p t-esc="props.view_description"/>
                     </div>
                 </div>
             </div>

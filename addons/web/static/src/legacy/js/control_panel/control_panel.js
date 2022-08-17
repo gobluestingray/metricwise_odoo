@@ -200,7 +200,6 @@ odoo.define('web.ControlPanel', function (require) {
         views: [],
         withBreadcrumbs: true,
         withSearchBar: true,
-        withViewDescription: "",
     };
     ControlPanel.props = {
         action: Object,
@@ -213,10 +212,10 @@ odoo.define('web.ControlPanel', function (require) {
         actionMenus: { validate: s => typeof s === 'object' || s === null, optional: 1 },
         title: { type: String, optional: 1 },
         view: { type: Object, optional: 1 },
+        view_description: { type: String, optional: 1 },
         views: Array,
         withBreadcrumbs: Boolean,
         withSearchBar: Boolean,
-        withViewDescription: String,
     };
     ControlPanel.template = 'web.Legacy.ControlPanel';
 

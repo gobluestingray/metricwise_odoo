@@ -295,7 +295,6 @@ def generate_views(action):
                 view_modes, view_id, action))
         action['views'] = [(False, mode) for mode in view_modes]
         return
-    __import__('ipdb').set_trace(context=15)
     action['views'] = [(view_id, view_modes[0], view_description)]
 
 def fix_view_modes(action):
