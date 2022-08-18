@@ -167,7 +167,7 @@ class IrActions(models.Model):
         """
         return {
             "binding_model_id", "binding_type", "binding_view_types",
-            "display_name", "help", "id", "name", "type", "xml_id",
+            "display_name", "help", "id", "name", "type", "xml_id", "view_description",
         }
 
 
