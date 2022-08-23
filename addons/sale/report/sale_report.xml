@@ -12,6 +12,72 @@
             <field name="binding_type">report</field>
         </record>
 
+        <record id="action_report_saleorder_cert" model="ir.actions.report">
+            <field name="name">Certificate of Completion</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_cert</field>
+            <field name="report_file">sale.report_cert</field>
+            <field name="print_report_name">Certificate of Completion</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_saleorder_pay" model="ir.actions.report">
+            <field name="name">Installer Pay Sheet</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_pay</field>
+            <field name="report_file">sale.report_pay</field>
+            <field name="print_report_name">Installer Pay Sheet</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_saleorder_commission" model="ir.actions.report">
+            <field name="name">Sales Commission Sheet</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_commission</field>
+            <field name="report_file">sale.report_commission</field>
+            <field name="print_report_name">Sales Commission Sheet</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_saleorder_ty" model="ir.actions.report">
+            <field name="name">Thank You Letter</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_ty</field>
+            <field name="report_file">sale.report_ty</field>
+            <field name="print_report_name">Thank You Letter</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_saleorder_contract" model="ir.actions.report">
+            <field name="name">Contract Acceptance Letter</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_contract</field>
+            <field name="report_file">sale.report_contract</field>
+            <field name="print_report_name">Contract Acceptance Letter</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_saleorder_wh" model="ir.actions.report">
+            <field name="name">Warehouse Sign</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">sale.report_wh</field>
+            <field name="report_file">sale.report_wh</field>
+            <field name="print_report_name">Warehouse Sign</field>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
         <record id="action_report_pro_forma_invoice" model="ir.actions.report">
             <field name="name">PRO-FORMA Invoice</field>
             <field name="model">sale.order</field>
