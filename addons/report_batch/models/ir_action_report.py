@@ -132,7 +132,7 @@ class IrActionsReport(models.Model):
         return res
 
     @api.model
-    def batch_print_reports(self, record_ids: odoo.models.Model) -> dict:
+    def batch_print_reports(self, record_ids: models.Model) -> dict:
         """
         Launch the Batch Print Records Wizard.
 
