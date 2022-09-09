@@ -9,6 +9,14 @@
                         <t t-call="web.Breadcrumbs" />
                     </t>
                 </div>
+                <div t-if="display['top-center']" class="o_cp_top_center">
+                    <t t-slot="control-panel-top-center">
+                        <t t-set="view_description" t-value="window.sessionStorage.current_action.split(':')[9].slice(1, window.sessionStorage.current_action.split(':')[9].search(','))"/>
+                        <t t-if="view_description">
+                            <p t-esc="view_description.slice(0,-1)" style="font-size: 18px;"/>
+                        </t>
+                    </t>
+                </div>
                 <div t-if="display['top-right']" class="o_cp_top_right">
                     <t t-slot="control-panel-top-right">
                         <SearchBar/>
@@ -64,5 +72,4 @@
             </li>
         </ol>
     </t>
-
 </templates>

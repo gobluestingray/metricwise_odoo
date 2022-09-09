@@ -66,6 +66,14 @@ odoo.define('web.ActionMixin', function (require) {
         _title: '',
 
         /**
+         * BLUE STINGRAY / METRIC WISE CUSTOM
+         * String containing the view description of the client action
+         *
+         * @see _setViewDescription
+         */
+        _viewDescription: '',
+
+        /**
          * @override
          */
         renderElement: function () {
@@ -155,6 +163,17 @@ odoo.define('web.ActionMixin', function (require) {
         },
 
         /**
+         * BLUE STINGRAY / METRIC WISE CUSTOM
+         * Returns a view_description that may be displayed in center of the
+         * control panel area.
+         *
+         * @returns {string}
+         */
+        getViewDescription: function () {
+            return this._viewDescription;
+        },
+
+        /**
          * Renders the buttons to append, in most cases, to the control panel (in
          * the bottom left corner). When the action is rendered in a dialog, those
          * buttons might be moved to the dialog's footer.
@@ -187,6 +206,11 @@ odoo.define('web.ActionMixin', function (require) {
                 this.controlPanelProps.title = this.getTitle();
                 delete props.title;
             }
+            if ('view_description' in props) {
+                this._setViewDescription(props.view_description);
+                this.controlPanelProps.view_description = this.getViewDescription();
+                delete props.view_description;
+            }
             if ('cp_content' in props) {
                 // cp_content has been updated: refresh it.
                 this.controlPanelProps.cp_content = Object.assign({},
@@ -210,6 +234,14 @@ odoo.define('web.ActionMixin', function (require) {
          */
         _setTitle: function (title) {
             this._title = title;
+        },
+
+        /**
+         * @private
+         * @param {string} view_description
+         */
+        _setViewDescription: function (view_description) {
+            this._viewDescription = view_description;
         },
 
         //---------------------------------------------------------------------
